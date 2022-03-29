@@ -23,11 +23,17 @@ public class Banco {
 	
 	public void adiciona(Conta conta) {
 		idConta++;
-		if(idConta <= 10) {
+		if(idConta <= this.contas.length) {
 			contas[idConta-1] = conta;
 		}
 		else {
-			System.out.println("Limite de contas alcançado");
+			Conta[] contas = new ContaCorrente[this.contas.length+10];
+			for(int i=0; i<this.contas.length;i++) {
+				contas[i] = this.contas[i];
+			}
+			this.contas = contas;
+			this.contas[idConta-1] = conta;
+			System.out.println(this.contas.length);
 		}
 	}
 	
